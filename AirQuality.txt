@@ -1,0 +1,34 @@
+Source code:-
+
+int air_quality;
+const int ledpin = 13;
+const int pot = A0;
+//const int buzzer = 12;
+void setup()
+{
+    	Serial.begin(9600);
+	pinMode(ledpin, OUTPUT);
+	//pinMode(buzzer, OUTPUT);
+	pinMode(pot, INPUT);
+}
+
+void loop()
+{ 
+	Serial.print("Air_Quality = ");
+	air_quality = analogRead(pot);
+	
+	if(air_quality>550)
+	{
+		digitalWrite(ledpin, HIGH);
+		//digitalWrite(buzzer, HIGH);    
+		Serial.println(air_quality);
+		delay(2000);	
+	}
+	else
+	{
+		digitalWrite(ledpin, LOW);
+		//digitalWrite(buzzer, LOW);
+		Serial.println(air_quality);
+		delay(2000);
+	}
+}
